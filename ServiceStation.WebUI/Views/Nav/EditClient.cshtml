@@ -1,0 +1,12 @@
+﻿@model ServiceStation.Domain.Entities.Client
+
+@{
+    ViewBag.Title = "EditClient";
+}
+<h1>Edit @Model.FirstName @Model.LastName</h1>
+@using (Html.BeginForm("EditClient", "Nav"))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel and return to List", "List", "Car")
+}

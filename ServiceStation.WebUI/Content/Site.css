@@ -1,0 +1,162 @@
+﻿BODY {
+    font-family: Cambria, Georgia, "Times New Roman";
+    margin: 0;
+}
+
+#header DIV.title, DIV.item H3, DIV.item H4 {
+    font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial;
+}
+
+#header {
+    background-color: #ff6a00;
+    border-bottom: 2px solid #111;
+    color: White;
+}
+
+    #header DIV.title {
+        font-size: 2em;
+        padding: .6em;
+    }
+
+#content {
+    border-left: 2px solid gray;
+    margin-left: 17em;
+    padding: 1em;
+}
+
+#menuItems {
+    float: left;
+    width: 16em;
+    padding: .3em;
+}
+
+DIV.item {
+    border-top: 1px dotted gray;
+    padding-top: .7em;
+    margin-bottom: .7em;
+}
+
+    DIV.item:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    DIV.item H3 {
+        font-size: 1.3em;
+        margin: 0 0 .25em 0;
+    }
+
+    DIV.item H4 {
+        font-size: 1.1em;
+        margin: .4em 0 0 0;
+    }
+
+input.submitbutton {
+    width: 18em;
+    height: 2em;
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+
+    input.submitbutton:hover {
+        background: gray;
+    }
+
+    input.submitbutton:active {
+        background: orange;
+    }
+
+#menuItems a.editbutton {
+    background: url(../Content/Images/edit.png);
+    width: 1.1em;
+    height: 1.1em;
+    display: block;
+    text-indent: -9999px;
+    object-fit: fill;
+}
+
+.button {
+    height: 1.1em;
+    width: 10%;
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+    background: silver;
+}
+
+.button:hover {
+        background: gray;
+    }
+
+.button:active {
+        background: orange;
+    }
+
+
+.textbox {
+    border: 1px solid #d1c7ac;
+    width: 230px;
+    color: #333333;
+    padding: 3px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+    font-family: tahoma, arial, sans-serif;
+}
+
+#menuItems A {
+    font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial;
+    display: block;
+    text-decoration: none;
+    padding: .6em;
+    color: Black;
+    border-bottom: 1px solid silver;
+}
+
+    #menuItems A.selected {
+        background-color: #ff6a00;
+        color: White;
+    }
+
+    #menuItems A:hover {
+        background-color: #feae76;
+    }
+
+    #menuItems A.selected:hover {
+        background-color: #ff6a00;
+    }
+
+.field-validation-error {
+    color: red;
+    display: block;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid red;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: red;
+}
+
+.validation-summary-valid {
+    display: none;
+}

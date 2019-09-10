@@ -1,0 +1,27 @@
+﻿@model ServiceStation.WebUI.Models.CarViewModel
+@{
+   ViewBag.Title = "Edit " + @Model.Car.VIN;
+}
+<h1>Edit @Model.Car.VIN</h1>
+@using (Html.BeginForm("EditCar", "Car"))
+{
+<table>
+    <tr>@Html.LabelFor(m => m.Car.VIN)</tr>
+    <tr>@Html.TextBoxFor(m => m.Car.VIN)</tr>
+    <tr>@Html.LabelFor(m => m.Car.Year)</tr>
+    <tr>@Html.TextBoxFor(m => m.Car.Year)</tr>
+    <tr>@Html.LabelFor(m => m.Model.MakeId)</tr>
+    <tr>@Html.DropDownListFor(m => m.Make.Id, ViewBag.AllMakes as SelectList, new { @onchange = "callChangefunc(this.value)" })</tr>
+    <tr>@Html.LabelFor(m => m.Model.Id)</tr>
+    <tr>@Html.DropDownListFor(m => m.Model.Id, ViewBag.AllModels as SelectList)</tr>
+    @Html.HiddenFor(m => m.Car.ClientId)
+    @Html.HiddenFor(m => m.Car.Id)
+</table>
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Cancel and return to List", "List")
+
+}<script>
+    function callChangefunc(val) {
+        window.location.href = "/Car/EditCar?id=" + @Model.Car.Id + "&selectedMake=" + val;
+    }
+</script>

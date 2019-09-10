@@ -1,0 +1,18 @@
+﻿@model ServiceStation.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Admin: Log In";
+}
+<div id="content">
+    <h1>Log In</h1>
+    <p>Please log in to access the administrative area:</p>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <p>User Name:</p>
+        <p>@Html.TextBoxFor(m => m.UserName, new { @class = "textbox" })</p>
+        <p>Password:</p>
+        <p>@Html.PasswordFor(m => m.Password, new { @class = "textbox" })</p>
+        <p><input type="submit" value="Log in" class="submitbutton" /></p>
+    }
+</div>

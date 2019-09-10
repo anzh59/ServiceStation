@@ -1,0 +1,38 @@
+﻿@model ServiceStation.WebUI.Models.OrdersListViewModel
+
+@{
+    ViewBag.Title = "Orders";
+}
+<div id="menuItems">
+    @{ Html.RenderAction("CarMenu", "CarNav"); }
+</div>
+<div id="content">
+    <table class="Grid">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var item in Model.Orders)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Date</td>
+                <td>@item.Status</td>
+                <td>@item.Amount</td>
+                <td>
+                    @Html.ActionLink("X", "Delete", new { id = item.Id }, new { @class = "button" })
+                </td>
+                <td>
+                    @Html.ActionLink("E", "EditOrder", new { id = item.Id }, new { @class = "button" })
+                </td>
+            </tr>
+        }
+    </table>
+    @if (!string.IsNullOrEmpty(Model.CurrentCarId))
+    {
+        <p>@Html.ActionLink("Add a new order", "Create", new { carId = Model.CurrentCarId })</p>
+    }
+</div>
+@Html.ActionLink("Back", "List", "Car")

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStation.Domain", "ServiceStation.Domain\ServiceStation.Domain.csproj", "{BDE83A87-28F6-4E35-9D4E-6D327FA388AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStation.WebUI", "ServiceStation.WebUI\ServiceStation.WebUI.csproj", "{CA1BF24E-BACE-4618-ABCE-4A0E8096A099}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BDE83A87-28F6-4E35-9D4E-6D327FA388AA} = {BDE83A87-28F6-4E35-9D4E-6D327FA388AA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDE83A87-28F6-4E35-9D4E-6D327FA388AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE83A87-28F6-4E35-9D4E-6D327FA388AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE83A87-28F6-4E35-9D4E-6D327FA388AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE83A87-28F6-4E35-9D4E-6D327FA388AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA1BF24E-BACE-4618-ABCE-4A0E8096A099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA1BF24E-BACE-4618-ABCE-4A0E8096A099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA1BF24E-BACE-4618-ABCE-4A0E8096A099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA1BF24E-BACE-4618-ABCE-4A0E8096A099}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DBC2B7E-7B70-4787-8B75-5AA90653721D}
+	EndGlobalSection
+EndGlobal
