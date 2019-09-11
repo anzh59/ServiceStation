@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ServiceStation.WebUI.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private ICarRepository _carRepository;
@@ -33,6 +34,7 @@ namespace ServiceStation.WebUI.Controllers
 
         public ActionResult Delete(int id)
         {
+            var carid = _orderRepository.Orders.FirstOrDefault(x => x.Id == id).CarId;
             if (_orderRepository.Orders.FirstOrDefault(x => x.Id == id).Status == OrderStatus.InProgress)
             {
                 TempData["message"] = string.Format("Order was not deleted: order is in progress");
@@ -45,16 +47,17 @@ namespace ServiceStation.WebUI.Controllers
                     TempData["message"] = string.Format("Order {0} was deleted", deletedOrder.Id);
                 }
             }
-            var carid = _orderRepository.Orders.FirstOrDefault(x => x.Id == id).CarId;
+
             return RedirectToAction("OrderList", new
             {
-                carid = carid,
+                carid,
                 clientid = _carRepository.Cars.FirstOrDefault(x => x.Id == carid).ClientId
             });
         }
 
         public ViewResult Create(int carId)
         {
+            ViewBag.ClientId = _carRepository.Cars.FirstOrDefault(x => x.Id == carId).ClientId;
             ViewBag.AllStatuses = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
             {
                 Text = v.ToString(),
@@ -82,8 +85,10 @@ namespace ServiceStation.WebUI.Controllers
             });
         }
 
-        public ViewResult EditOrder(int id)
+        public ViewResult Edit(int id)
         {
+            var order = _orderRepository.Orders.FirstOrDefault(x => x.Id == id);
+            ViewBag.ClientId = _carRepository.Cars.FirstOrDefault(x => x.Id == order.CarId).ClientId;
             ViewBag.AllStatuses = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
             {
                 Text = v.ToString(),
@@ -106,7 +111,7 @@ namespace ServiceStation.WebUI.Controllers
 
             return View("EditOrder", new OrderViewModel()
             {
-                Order = _orderRepository.Orders.FirstOrDefault(x => x.Id == id),
+                Order = order,
                 OrderServices = orderServices.ToArray(),
                 ServiceTypes = _orderRepository.ServiceTypes
             });
@@ -122,7 +127,7 @@ namespace ServiceStation.WebUI.Controllers
                     Id = orderVM.Order.Id,
                     Amount = orderVM.Order.Amount,
                     CarId = orderVM.Order.CarId,
-                    Date = orderVM.Order.Date,
+                    Date = orderVM.Order.Id == 0 ? DateTime.Now : orderVM.Order.Date,
                     Status = orderVM.Order.Status
                 };
 
@@ -153,6 +158,15 @@ namespace ServiceStation.WebUI.Controllers
             }
             else
             {
+                ViewBag.ClientId = _carRepository.Cars.FirstOrDefault(x => x.Id == orderVM.Order.CarId).ClientId;
+                ViewBag.AllStatuses = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
+                {
+                    Text = v.ToString(),
+                    Value = ((int)v).ToString()
+                }).ToList(), "Value", "Text");
+
+                orderVM.ServiceTypes = _orderRepository.ServiceTypes;
+
                 return View(orderVM);
             }
         }

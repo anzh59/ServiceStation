@@ -3,10 +3,32 @@
 @{
     ViewBag.Title = "EditClient";
 }
-<h1>Edit @Model.FirstName @Model.LastName</h1>
-@using (Html.BeginForm("EditClient", "Nav"))
-{
-    @Html.EditorForModel()
-    <input type="submit" value="Save" />
-    @Html.ActionLink("Cancel and return to List", "List", "Car")
-}
+<div id="content">
+    @if (Model.Id == 0)
+    {
+        <h1>Create new client</h1>
+    }
+    else
+    {
+        <h1>Edit @Model.FirstName @Model.LastName</h1>
+    }
+
+    @using (Html.BeginForm("EditClient", "Nav"))
+    {
+        @Html.ValidationSummary(false)
+        <p>First Name</p>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "textbox" })
+        <p>Last Name</p>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "textbox" })
+        <p>Date of birth</p>
+        @Html.EditorFor(m => m.DateOfBirth)
+        <p>Address</p>
+        @Html.TextBoxFor(m => m.Address, new { @class = "textbox" })
+        <p>Phone</p>
+        @Html.TextBoxFor(m => m.Phone, new { @class = "textbox" })
+        <p>Email</p>
+        @Html.TextBoxFor(m => m.Email, new { @class = "textbox" })
+        <p><input type="submit" value="Save" class="submitbutton" /></p>
+        @Html.ActionLink("Cancel and return to List", "List", "Car", new { }, new { @class = "link" })
+    }
+</div>

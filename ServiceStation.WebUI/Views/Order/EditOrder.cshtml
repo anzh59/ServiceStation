@@ -3,28 +3,35 @@
 @{
     ViewBag.Title = "Edit Order";
 }
-
-<h1>Edit order @Model.Order.Id</h1>
-@using (Html.BeginForm("EditOrder", "Order"))
-{
-<table>
-    <tr>@Html.LabelFor(m => m.Order.Date)</tr>
-    <tr>@Html.TextBoxFor(m => m.Order.Date)</tr>
-    <tr>@Html.LabelFor(m => m.Order.Amount)</tr>
-    <tr>@Html.TextBoxFor(m => m.Order.Amount)</tr>
-    <tr>@Html.LabelFor(m => m.Order.Status)</tr>
-    <tr>@Html.DropDownListFor(m => m.Order.Status, ViewBag.AllStatuses as SelectList)</tr>
-    @for (int i = 0; i < Model.OrderServices.Length; i++)
+<div id="content">
+    @if (Model.Order.Id == 0)
     {
-        @Html.HiddenFor(m => m.OrderServices[i].ServiceId)
-        @Html.CheckBoxFor(m => m.OrderServices[i].Checked) @Model.ServiceTypes.FirstOrDefault(x => x.Id == Model.OrderServices[i].ServiceId).Name
-        @Html.TextBoxFor(m => m.OrderServices[i].Note)
+        <h1>Create a new order</h1>
     }
-    @Html.HiddenFor(m => m.Order.CarId)
-    @Html.HiddenFor(m => m.Order.Id)
-</table>
-    <input type="submit" value="Save" />
-    @Html.ActionLink("Cancel and return to order list", "OrderList")
+    else
+    {
+        <h1>Edit order @Model.Order.Id</h1>
+    }
 
-}
+    @using (Html.BeginForm("EditOrder", "Order"))
+    {
+        @Html.ValidationSummary(false)
+        <p>Amount</p>
+        @Html.TextBoxFor(m => m.Order.Amount, new { @class = "textbox" })
+        <p>Status</p>
+        @Html.DropDownListFor(m => m.Order.Status, ViewBag.AllStatuses as SelectList)
+        for (int i = 0; i < Model.OrderServices.Length; i++)
+        {
+            <br/><br />
+            @Html.HiddenFor(m => m.OrderServices[i].ServiceId)
+            @Html.CheckBoxFor(m => m.OrderServices[i].Checked) @Model.ServiceTypes.FirstOrDefault(x => x.Id == Model.OrderServices[i].ServiceId).Name
+            <br />@Html.TextBoxFor(m => m.OrderServices[i].Note, new { @class = "textbox" })
+        }
+        @Html.HiddenFor(m => m.Order.CarId)
+        @Html.HiddenFor(m => m.Order.Id)
+        @Html.HiddenFor(m => m.Order.Date)
+            <p><input type="submit" value="Save" class="submitbutton"/></p>
+        @Html.ActionLink("Cancel and return to order list", "OrderList", new { carid = Model.Order.CarId, clientid = ViewBag.ClientId }, new { @class = "link"})
 
+    }
+</div>

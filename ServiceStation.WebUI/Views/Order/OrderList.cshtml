@@ -9,30 +9,48 @@
 <div id="content">
     <table class="Grid">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Actions</th>
+            @if (!string.IsNullOrEmpty(Model.CurrentCarId))
+            {
+                <th>ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Amount</th>
+            }
+            else
+            {
+                <h4>Choose a car to display orders.</h4>
+            }
         </tr>
         @foreach (var item in Model.Orders)
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Date</td>
+                <td>@item.Date.ToString()</td>
                 <td>@item.Status</td>
                 <td>@item.Amount</td>
                 <td>
-                    @Html.ActionLink("X", "Delete", new { id = item.Id }, new { @class = "button" })
+                    @using (Html.BeginForm("Delete", "Order"))
+                    {
+                        @Html.Hidden("Id", item.Id)
+                        <input type="submit" value="Delete" class="cardeletebutton" />
+                    }
                 </td>
                 <td>
-                    @Html.ActionLink("E", "EditOrder", new { id = item.Id }, new { @class = "button" })
+                    @using (Html.BeginForm("Edit", "Order"))
+                    {
+                        @Html.Hidden("Id", item.Id)
+                        <input type="submit" value="Edit" class="ordereditbutton" />
+                    }
                 </td>
             </tr>
         }
     </table>
     @if (!string.IsNullOrEmpty(Model.CurrentCarId))
     {
-        <p>@Html.ActionLink("Add a new order", "Create", new { carId = Model.CurrentCarId })</p>
+        <p>@Html.ActionLink("+ add a new order", "Create", new { carId = Model.CurrentCarId }, new { @class = "link" })</p>
     }
 </div>
-@Html.ActionLink("Back", "List", "Car")
+<div>
+    <br />
+    @Html.ActionLink("Back", "List", "Car", new { }, new { @class = "link" })
+</div>

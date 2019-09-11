@@ -7,35 +7,45 @@
     @{ Html.RenderAction("Menu", "Nav"); }
 </div>
 <div id="content">
-    <table class="Grid">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Actions</th>
+    <table>
+        <tr >
+            @if (!string.IsNullOrEmpty(Model.CurrentClientId))
+            {
+                <th>ID</th>
+                <th>VIN</th>
+                <th>Year</th>
+            }
+            else
+            {
+                <h4>Choose a client to display cars.</h4>
+            }
         </tr>
         @foreach (var item in Model.Cars)
         {
-        <tr>
+        <tr >
             <td>@item.Id</td>
-            <td>@Html.ActionLink(item.VIN, "EditCar", new { item.Id })</td>
+            <td>@Html.ActionLink(item.VIN, "EditCar", new { item.Id }, new { @class = "link" })</td>
             <td>@item.Year</td>
             <td>
                 @using (Html.BeginForm("Delete", "Car"))
                 {
                     @Html.Hidden("Id", item.Id)
-                    <input type="submit" value="X" class="button" />
+                    <input type="submit" value="Delete" class="cardeletebutton" />
                 }
             </td>
             <td>
-                @Html.ActionLink("Orders", "OrderList", "Order", 
-                    new { carId = item.Id, clientId = item.ClientId }, new { @class = "button" })
+                @using (Html.BeginForm("OrderList", "Order"))
+                {
+                    @Html.Hidden("carId", item.Id)
+                    @Html.Hidden("clientId", item.ClientId)
+                    <input type="submit" value="Orders" class="ordersbutton" />
+                }
             </td>
         </tr>
         }
     </table>
     @if (!string.IsNullOrEmpty(Model.CurrentClientId))
     {
-        <p>@Html.ActionLink("Add a new car", "Create", new { clientId = Model.CurrentClientId })</p>
+        <p>@Html.ActionLink("+ add a new car", "Create", new { clientId = Model.CurrentClientId }, new { @class = "link" })</p>
     }
 </div>

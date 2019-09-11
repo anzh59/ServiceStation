@@ -48,11 +48,13 @@ namespace ServiceStation.WebUI.Controllers
             return View(carVM);
         }
 
-        public ViewResult Create(int clientId)
+        public ViewResult Create(int clientId, int? selectedMake = null)
         {
             ViewBag.AllMakes = new SelectList(_repository.Makes, "Id", "Name");
             ViewBag.AllModels = new SelectList(_repository.Models
-                   .Where(m => m.MakeId == _repository.Makes.First().Id), "Id", "Name");
+                   .Where(m => m.MakeId == (selectedMake ?? _repository.Makes.First().Id)), "Id", "Name");
+
+            var make = _repository.Makes.FirstOrDefault(m => m.Id == (selectedMake ?? m.Id));
 
             return View("EditCar", new CarViewModel()
             {
@@ -60,7 +62,7 @@ namespace ServiceStation.WebUI.Controllers
                 {
                     ClientId = clientId
                 },
-                Make = new Make(),
+                Make = make,
                 Model = new Model(),
             });
         }
@@ -85,6 +87,10 @@ namespace ServiceStation.WebUI.Controllers
             }
             else
             {
+                var model = _repository.Models.FirstOrDefault(m => m.Id == carVM.Model.Id);
+                ViewBag.AllModels = new SelectList(_repository.Models
+                    .Where(m => m.MakeId == carVM.Make.Id), "Id", "Name", model.Id);
+                ViewBag.AllMakes = new SelectList(_repository.Makes, "Id", "Name", carVM.Make.Id);
                 return View(carVM);
             }
         }

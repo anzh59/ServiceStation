@@ -13,6 +13,8 @@ namespace ServiceStation.Domain.Entities
 
         [HiddenInput(DisplayValue = false)]
         public int ClientId { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:####}", ApplyFormatInEditMode = true)]
         public int Year { get; set; }
 
         [Required(ErrorMessage = "Please enter the VIN")]

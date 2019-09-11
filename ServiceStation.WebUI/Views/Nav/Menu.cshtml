@@ -11,25 +11,25 @@
         {
         <tr>
             <td>
-                @Html.RouteLink($"{client.FirstName} {client.LastName}", new
-           {
-               controller = "Car",
-               action = "List",
-               clientId = client.Id,
-               clientName = ViewBag.ClientName
-           },
-             new
-             {
-                 @class = client.Id == ViewBag.SelectedClient ? "selected" : null
-             })
+                    @Html.RouteLink($"{client.FirstName} {client.LastName}", new
+               {
+                   controller = "Car",
+                   action = "List",
+                   clientId = client.Id,
+                   clientName = ViewBag.ClientName
+               },
+                 new
+                 {
+                     @class = client.Id == ViewBag.SelectedClient ? "selected" : null
+                 })
             </td>
             <td>
-                @Html.ActionLink("E", "EditClient", new { id = client.Id }, new { @class = "button" })
+                    @Html.ActionLink("Edit", "EditClient", new { id = client.Id }, new { @class = "editbutton" })
             </td>
             <td>
-                @Html.ActionLink("X", "DeleteClient", new { id = client.Id }, new { @class = "button" })
+                @Html.ActionLink("Delete", "DeleteClient", new { id = client.Id }, new { @class = "deletebutton" })
             </td>
         </tr>
         }
     </table>
-    <p>@Html.ActionLink("Add a new client", "CreateClient")</p>
+        <p>@Html.ActionLink("+ add a new client", "CreateClient")</p>

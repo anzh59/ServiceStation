@@ -10,9 +10,9 @@
     {
         @Html.ValidationSummary(true)
         <p>User Name:</p>
-        <p>@Html.TextBoxFor(m => m.UserName, new { @class = "textbox" })</p>
+         @Html.TextBoxFor(m => m.UserName, new { @class = "textbox" })
         <p>Password:</p>
-        <p>@Html.PasswordFor(m => m.Password, new { @class = "textbox" })</p>
-        <p><input type="submit" value="Log in" class="submitbutton" /></p>
+         @Html.PasswordFor(m => m.Password, new { @class = "textbox" })
+        <br /><input type="submit" value="Log in" class="submitbutton" />
     }
 </div>

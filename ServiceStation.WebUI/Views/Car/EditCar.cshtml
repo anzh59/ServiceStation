@@ -2,26 +2,37 @@
 @{
    ViewBag.Title = "Edit " + @Model.Car.VIN;
 }
-<h1>Edit @Model.Car.VIN</h1>
-@using (Html.BeginForm("EditCar", "Car"))
-{
-<table>
-    <tr>@Html.LabelFor(m => m.Car.VIN)</tr>
-    <tr>@Html.TextBoxFor(m => m.Car.VIN)</tr>
-    <tr>@Html.LabelFor(m => m.Car.Year)</tr>
-    <tr>@Html.TextBoxFor(m => m.Car.Year)</tr>
-    <tr>@Html.LabelFor(m => m.Model.MakeId)</tr>
-    <tr>@Html.DropDownListFor(m => m.Make.Id, ViewBag.AllMakes as SelectList, new { @onchange = "callChangefunc(this.value)" })</tr>
-    <tr>@Html.LabelFor(m => m.Model.Id)</tr>
-    <tr>@Html.DropDownListFor(m => m.Model.Id, ViewBag.AllModels as SelectList)</tr>
-    @Html.HiddenFor(m => m.Car.ClientId)
-    @Html.HiddenFor(m => m.Car.Id)
-</table>
-    <input type="submit" value="Save" />
-    @Html.ActionLink("Cancel and return to List", "List")
-
-}<script>
-    function callChangefunc(val) {
-        window.location.href = "/Car/EditCar?id=" + @Model.Car.Id + "&selectedMake=" + val;
+<div id="content">
+    @if (@Model.Car.Id == 0)
+    {
+        <h1>Create a new car</h1>
     }
-</script>
+    else
+    {
+        <h1>Edit @Model.Car.VIN</h1>
+    }
+    @using (Html.BeginForm("EditCar", "Car"))
+    {
+        @Html.ValidationSummary(false)
+        <p>VIN</p>
+        @Html.TextBoxFor(m => m.Car.VIN, new { @class = "textbox" })
+        <p>Year</p>
+        @Html.TextBoxFor(m => m.Car.Year, new { @class = "textbox" })
+        <p>Make</p>
+        @Html.DropDownListFor(m => m.Make.Id, ViewBag.AllMakes as SelectList, new { @class = "textbox", @onchange = "callChangefunc(this.value)" })
+        <p>Model</p>
+        <tr>@Html.DropDownListFor(m => m.Model.Id, ViewBag.AllModels as SelectList, new { @class = "textbox" })</tr>
+        @Html.HiddenFor(m => m.Car.ClientId)
+        @Html.HiddenFor(m => m.Car.Id)
+        <p><input type="submit" value="Save" class="submitbutton"/></p>
+        @Html.ActionLink("Cancel and return to List", "List", new { clientid = Model.Car.ClientId }, new { @class = "link" })
+
+    }
+    <script>
+    function callChangefunc(val) {
+        @Model.Car.Id == 0
+            ? window.location.href = "/Car/Create?clientId=" + @Model.Car.ClientId + "&selectedMake=" + val
+            : window.location.href = "/Car/EditCar?id=" + @Model.Car.Id + "&selectedMake=" + val;
+    }
+    </script>
+</div>

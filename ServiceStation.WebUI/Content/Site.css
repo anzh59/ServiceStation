@@ -51,9 +51,14 @@ DIV.item {
         margin: .4em 0 0 0;
     }
 
+td.container {
+    height: 40px;
+    width: 40px;
+}
+
 input.submitbutton {
-    width: 18em;
-    height: 2em;
+    width: 19em;
+    height: 2.5em;
     display: inline-block;
     color: white;
     font-weight: 700;
@@ -73,14 +78,104 @@ input.submitbutton {
         background: orange;
     }
 
-#menuItems a.editbutton {
-    background: url(../Content/Images/edit.png);
-    width: 1.1em;
-    height: 1.1em;
-    display: block;
-    text-indent: -9999px;
-    object-fit: fill;
+.link {
+    font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial;
+    text-decoration: none;
+    color: Black;
 }
+
+.link:hover {
+    opacity: 0.5;
+}
+
+
+#menuItems a {
+    font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial;
+    display: block;
+    text-decoration: none;
+    padding: .6em;
+    color: Black;
+    border-bottom: 1px solid silver;
+}
+
+#menuItems a.selected {
+    background-color: #ff6a00;
+    color: White;
+}
+
+    #menuItems a:hover {
+        background-color: #feae76;
+        opacity: 1;
+    }
+
+#menuItems a.selected:hover {
+    background-color: #ff6a00;
+}
+
+.editbutton {
+    background: url(../Content/Images/edit.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px;
+    border-bottom: none;
+}
+
+.deletebutton {
+    background: url(../Content/Images/delete.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+    width: 15px;
+    height: 15px;
+    text-indent: -9999px;
+    border-bottom: none;
+}
+
+.cardeletebutton {
+    background: url(../Content/Images/delete.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    border-bottom: none;
+}
+
+    .cardeletebutton:hover {
+        opacity: 0.5;
+    }
+.ordereditbutton {
+    background: url(../Content/Images/edit.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    border-bottom: none;
+}
+    .ordereditbutton:hover {
+        opacity: 0.5;
+    }
+
+.ordersbutton {
+    background: url(../Content/Images/orders.png) no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    border-bottom: none;
+}
+
+    .ordersbutton:hover {
+        opacity: 0.5;
+    }
 
 .button {
     height: 1.1em;
@@ -101,42 +196,15 @@ input.submitbutton {
         background: gray;
     }
 
-.button:active {
-        background: orange;
-    }
-
-
 .textbox {
     border: 1px solid #d1c7ac;
-    width: 230px;
+    width: 18.4em;
     color: #333333;
     padding: 3px;
     margin-right: 4px;
     margin-bottom: 8px;
     font-family: tahoma, arial, sans-serif;
 }
-
-#menuItems A {
-    font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial;
-    display: block;
-    text-decoration: none;
-    padding: .6em;
-    color: Black;
-    border-bottom: 1px solid silver;
-}
-
-    #menuItems A.selected {
-        background-color: #ff6a00;
-        color: White;
-    }
-
-    #menuItems A:hover {
-        background-color: #feae76;
-    }
-
-    #menuItems A.selected:hover {
-        background-color: #ff6a00;
-    }
 
 .field-validation-error {
     color: red;

@@ -9,18 +9,19 @@ namespace ServiceStation.Domain.Entities
     {
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
-
-        [Display(Description = "First Name")]
+        
         [Required(ErrorMessage = "Please enter first name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter last name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "Please enter birth date")]
         public DateTime DateOfBirth { get; set; }
         public string Address { get; set; }
-
+         
         [Required(ErrorMessage = "Please enter phone number")]
         public string Phone { get; set; }
 

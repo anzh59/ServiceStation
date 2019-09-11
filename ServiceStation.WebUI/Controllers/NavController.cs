@@ -7,6 +7,7 @@ using System.Web.Routing;
 
 namespace ServiceStation.WebUI.Controllers
 {
+    [Authorize]
     public class NavController : Controller
     {
         private IClientRepository _repository;

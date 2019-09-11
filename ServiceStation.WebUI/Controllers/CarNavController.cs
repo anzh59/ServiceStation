@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ServiceStation.WebUI.Controllers
 {
+    [Authorize]
     public class CarNavController : Controller
     {
         private ICarRepository _repository;
