@@ -1,10 +1,7 @@
-﻿using ServiceStation.Domain.Abstract;
+﻿using System.Linq;
+
+using ServiceStation.Domain.Abstract;
 using ServiceStation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceStation.Domain.Implementation
 {

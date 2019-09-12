@@ -2,13 +2,13 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject;
+
 using ServiceStation.Domain.Abstract;
 using ServiceStation.Domain.Implementation;
 using ServiceStation.WebUI.Infrastructure.Abstract;
 using ServiceStation.WebUI.Infrastructure.Concrete;
-using SportsStore.WebUI.Infrastructure.Concrete;
 
-namespace SportsStore.WebUI.Infrastructure
+namespace ServiceStation.WebUI.Infrastructure
 {
     public class NinjectControllerFactory : DefaultControllerFactory 
     {

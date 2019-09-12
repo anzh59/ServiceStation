@@ -6,6 +6,7 @@ namespace ServiceStation.Domain.Abstract
     public class MySqlDBAccessor : IDBAccessor
     {
         public string ConnectionString { get; private set; }
+
         public bool CheckConnectivity()
         {
             bool result = false;

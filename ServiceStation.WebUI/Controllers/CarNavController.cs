@@ -1,11 +1,9 @@
-﻿using ServiceStation.Domain.Abstract;
-using ServiceStation.Domain.Entities;
-using ServiceStation.WebUI.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using ServiceStation.Domain.Abstract;
+using ServiceStation.WebUI.Models;
 
 namespace ServiceStation.WebUI.Controllers
 {
@@ -23,8 +21,7 @@ namespace ServiceStation.WebUI.Controllers
         {
             ViewBag.SelectedCar = carId;
 
-            var cars = _repository.Cars.Where(x => clientId == null || x.ClientId.ToString() == clientId)
-                .ToList();
+            var cars = _repository.Cars.Where(x => clientId == null || x.ClientId.ToString() == clientId).ToList();
 
             List<CarViewModel> resultCars = new List<CarViewModel>();
 

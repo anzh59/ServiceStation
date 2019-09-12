@@ -1,21 +1,22 @@
-﻿using ServiceStation.Domain.Abstract;
-using ServiceStation.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
+
+using ServiceStation.Domain.Abstract;
+using ServiceStation.Domain.Entities;
 
 namespace ServiceStation.WebUI.Controllers
 {
     [Authorize]
-    public class NavController : Controller
+    public class ClientNavController : Controller
     {
         private IClientRepository _repository;
 
-        public NavController(IClientRepository repo)
+        public ClientNavController(IClientRepository repo)
         {
             _repository = repo;
         }
+
         public PartialViewResult Menu(int? clientid = null, string clientName = "")
         {
             ViewBag.SelectedClient = clientid;
@@ -31,8 +32,7 @@ namespace ServiceStation.WebUI.Controllers
 
         public ViewResult EditClient(int id)
         {
-            var client = _repository.Clients
-                .FirstOrDefault(p => p.Id == id);
+            var client = _repository.Clients.FirstOrDefault(p => p.Id == id);
             return View(client);
         }
 
@@ -43,6 +43,7 @@ namespace ServiceStation.WebUI.Controllers
             {
                 _repository.SaveClient(client);
                 TempData["message"] = string.Format("{0} has been saved", client.FirstName);
+
                 return RedirectToAction("List", "Car");
             }
             else
@@ -63,6 +64,7 @@ namespace ServiceStation.WebUI.Controllers
             {
                 TempData["message"] = string.Format("{0} was deleted", deletedClient.FirstName);
             }
+
             return RedirectToAction("List", "Car");
         }
     }

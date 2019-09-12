@@ -1,8 +1,6 @@
-﻿using ServiceStation.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+
+using ServiceStation.Domain.Entities;
 
 namespace ServiceStation.WebUI.Models
 {

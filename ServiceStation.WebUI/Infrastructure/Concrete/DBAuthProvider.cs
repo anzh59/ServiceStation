@@ -1,10 +1,7 @@
-﻿using ServiceStation.Domain.Abstract;
+﻿using System.Web.Security;
+
+using ServiceStation.Domain.Abstract;
 using ServiceStation.WebUI.Infrastructure.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
 
 namespace ServiceStation.WebUI.Infrastructure.Concrete
 {
@@ -20,11 +17,13 @@ namespace ServiceStation.WebUI.Infrastructure.Concrete
         public bool Authenticate(string username, string password)
         {
             _dbAccessor.SetConnectionUserInfo(username, password);
+
             bool result = _dbAccessor.CheckConnectivity();
             if (result)
             {
                 FormsAuthentication.SetAuthCookie(username, false);
             }
+
             return result;
         }
     }

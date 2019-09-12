@@ -30,8 +30,7 @@
         @Html.HiddenFor(m => m.Order.CarId)
         @Html.HiddenFor(m => m.Order.Id)
         @Html.HiddenFor(m => m.Order.Date)
-            <p><input type="submit" value="Save" class="submitbutton"/></p>
+        <p><input type="submit" value="Save" class="submitbutton"/></p>
         @Html.ActionLink("Cancel and return to order list", "OrderList", new { carid = Model.Order.CarId, clientid = ViewBag.ClientId }, new { @class = "link"})
-
     }
 </div>

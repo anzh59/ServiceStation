@@ -1,9 +1,9 @@
-﻿using ServiceStation.Domain.Abstract;
+﻿using System.Linq;
+using System.Web.Mvc;
+
+using ServiceStation.Domain.Abstract;
 using ServiceStation.Domain.Entities;
 using ServiceStation.WebUI.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace ServiceStation.WebUI.Controllers
 {
@@ -12,6 +12,7 @@ namespace ServiceStation.WebUI.Controllers
     {
         private ICarRepository _repository;
         private IOrderRepository _orderRepository;
+
         public CarController(ICarRepository carRepository, IOrderRepository orderRepository)
         {
             _repository = carRepository;
@@ -27,6 +28,7 @@ namespace ServiceStation.WebUI.Controllers
                     .OrderBy(c => c.Id),
                 CurrentClientId = clientid
             };
+
             return View(viewModel);
         }
 
@@ -35,6 +37,7 @@ namespace ServiceStation.WebUI.Controllers
             var car = _repository.Cars.FirstOrDefault(p => p.Id == id);
             var model = _repository.Models.FirstOrDefault(m => m.Id == car.ModelId);
             var make = _repository.Makes.FirstOrDefault(m => m.Id == (selectedMake ?? model.MakeId));
+
             ViewBag.AllModels = new SelectList(_repository.Models
                 .Where(m => m.MakeId == make.Id), "Id", "Name", model.Id);
             ViewBag.AllMakes = new SelectList(_repository.Makes, "Id", "Name", make.Id);
@@ -45,6 +48,7 @@ namespace ServiceStation.WebUI.Controllers
                 Model = model,
                 Make = make
             };
+
             return View(carVM);
         }
 
@@ -91,6 +95,7 @@ namespace ServiceStation.WebUI.Controllers
                 ViewBag.AllModels = new SelectList(_repository.Models
                     .Where(m => m.MakeId == carVM.Make.Id), "Id", "Name", model.Id);
                 ViewBag.AllMakes = new SelectList(_repository.Makes, "Id", "Name", carVM.Make.Id);
+
                 return View(carVM);
             }
         }
@@ -98,8 +103,7 @@ namespace ServiceStation.WebUI.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            if (_orderRepository.Orders
-                .Where(x => ((x.CarId == id) && (x.Status == OrderStatus.InProgress))).Count() > 0) 
+            if (_orderRepository.Orders.Where(x => ((x.CarId == id) && (x.Status == OrderStatus.InProgress))).Count() > 0) 
             {
                 TempData["message"] = string.Format("Car was not deleted: order in progress exists");
             }

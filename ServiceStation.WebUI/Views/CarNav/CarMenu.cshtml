@@ -6,16 +6,16 @@
         <tr>
             <td>
                 @Html.RouteLink($"{carVM.Make.Name} {carVM.Model.Name} {carVM.Car.VIN}", new
-           {
-               controller = "Order",
-               action = "OrderList",
-               carId = carVM.Car.Id,
-               clientId = carVM.Car.ClientId
-           },
-             new
-             {
-                 @class = carVM.Car.Id.ToString() == ViewBag.SelectedCar ? "selected" : null
-             })
+                {
+                    controller = "Order",
+                    action = "OrderList",
+                    carId = carVM.Car.Id,
+                    clientId = carVM.Car.ClientId
+                },
+                new
+                {
+                    @class = carVM.Car.Id.ToString() == ViewBag.SelectedCar ? "selected" : null
+                })
             </td>
         </tr>
     }

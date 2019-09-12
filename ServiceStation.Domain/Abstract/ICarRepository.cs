@@ -1,5 +1,6 @@
-﻿using ServiceStation.Domain.Entities;
-using System.Linq;
+﻿using System.Linq;
+
+using ServiceStation.Domain.Entities;
 
 namespace ServiceStation.Domain.Abstract
 {

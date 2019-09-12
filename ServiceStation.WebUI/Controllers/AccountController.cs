@@ -1,12 +1,14 @@
 ﻿using System.Web.Mvc;
+
 using ServiceStation.WebUI.Infrastructure.Abstract;
 using ServiceStation.WebUI.Models;
 
-namespace SportsStore.WebUI.Controllers
+namespace ServiceStation.WebUI.Controllers
 {
     public class AccountController : Controller
     {
         IAuthProvider _authProvider;
+
         public AccountController(IAuthProvider auth)
         {
             _authProvider = auth;

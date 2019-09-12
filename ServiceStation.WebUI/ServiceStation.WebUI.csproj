@@ -162,12 +162,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CarNavController.cs" />
-    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ClientNavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,8 +194,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Car\EditCar.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Nav\Menu.cshtml" />
-    <Content Include="Views\Nav\EditClient.cshtml" />
+    <Content Include="Views\ClientNav\Menu.cshtml" />
+    <Content Include="Views\ClientNav\EditClient.cshtml" />
     <Content Include="Views\Order\OrderList.cshtml" />
     <Content Include="Views\CarNav\CarMenu.cshtml" />
     <Content Include="Views\Order\EditOrder.cshtml" />

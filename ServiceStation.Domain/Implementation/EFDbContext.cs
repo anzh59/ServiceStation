@@ -1,7 +1,7 @@
-﻿using ServiceStation.Domain.Entities;
-using System.Configuration;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+
 using ServiceStation.Domain.Abstract;
+using ServiceStation.Domain.Entities;
 
 namespace ServiceStation.Domain.Implementation
 {

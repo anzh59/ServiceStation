@@ -13,10 +13,10 @@
     color: White;
 }
 
-    #header DIV.title {
-        font-size: 2em;
-        padding: .6em;
-    }
+#header DIV.title {
+    font-size: 2em;
+    padding: .6em;
+}
 
 #content {
     border-left: 2px solid gray;
@@ -36,20 +36,20 @@ DIV.item {
     margin-bottom: .7em;
 }
 
-    DIV.item:first-child {
-        border-top: none;
-        padding-top: 0;
-    }
+DIV.item:first-child {
+    border-top: none;
+    padding-top: 0;
+}
 
-    DIV.item H3 {
-        font-size: 1.3em;
-        margin: 0 0 .25em 0;
-    }
+DIV.item H3 {
+    font-size: 1.3em;
+    margin: 0 0 .25em 0;
+}
 
-    DIV.item H4 {
-        font-size: 1.1em;
-        margin: .4em 0 0 0;
-    }
+DIV.item H4 {
+    font-size: 1.1em;
+    margin: .4em 0 0 0;
+}
 
 td.container {
     height: 40px;
@@ -70,13 +70,13 @@ input.submitbutton {
     transition: 0.2s;
 }
 
-    input.submitbutton:hover {
-        background: gray;
-    }
+input.submitbutton:hover {
+    background: gray;
+}
 
-    input.submitbutton:active {
-        background: orange;
-    }
+input.submitbutton:active {
+    background: orange;
+}
 
 .link {
     font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial;
@@ -103,10 +103,10 @@ input.submitbutton {
     color: White;
 }
 
-    #menuItems a:hover {
-        background-color: #feae76;
-        opacity: 1;
-    }
+#menuItems a:hover {
+    background-color: #feae76;
+    opacity: 1;
+}
 
 #menuItems a.selected:hover {
     background-color: #ff6a00;
@@ -145,9 +145,10 @@ input.submitbutton {
     border-bottom: none;
 }
 
-    .cardeletebutton:hover {
-        opacity: 0.5;
-    }
+.cardeletebutton:hover {
+    opacity: 0.5;
+}
+
 .ordereditbutton {
     background: url(../Content/Images/edit.png) no-repeat;
     background-size: 100% 100%;
@@ -158,9 +159,10 @@ input.submitbutton {
     text-indent: -9999px;
     border-bottom: none;
 }
-    .ordereditbutton:hover {
-        opacity: 0.5;
-    }
+
+.ordereditbutton:hover {
+    opacity: 0.5;
+}
 
 .ordersbutton {
     background: url(../Content/Images/orders.png) no-repeat;
@@ -173,9 +175,9 @@ input.submitbutton {
     border-bottom: none;
 }
 
-    .ordersbutton:hover {
-        opacity: 0.5;
-    }
+.ordersbutton:hover {
+    opacity: 0.5;
+}
 
 .button {
     height: 1.1em;

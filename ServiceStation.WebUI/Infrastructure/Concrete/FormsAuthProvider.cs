@@ -1,7 +1,8 @@
-﻿using ServiceStation.WebUI.Infrastructure.Abstract;
-using System.Web.Security;
+﻿using System.Web.Security;
 
-namespace SportsStore.WebUI.Infrastructure.Concrete
+using ServiceStation.WebUI.Infrastructure.Abstract;
+
+namespace ServiceStation.WebUI.Infrastructure.Concrete
 {
     public class FormsAuthProvider : IAuthProvider
     {

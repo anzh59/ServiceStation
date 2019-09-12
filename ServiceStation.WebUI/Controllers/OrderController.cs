@@ -1,11 +1,11 @@
-﻿using ServiceStation.Domain.Abstract;
-using ServiceStation.Domain.Entities;
-using ServiceStation.WebUI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
+using ServiceStation.Domain.Abstract;
+using ServiceStation.Domain.Entities;
+using ServiceStation.WebUI.Models;
 
 namespace ServiceStation.WebUI.Controllers
 {
@@ -14,6 +14,7 @@ namespace ServiceStation.WebUI.Controllers
     {
         private ICarRepository _carRepository;
         private IOrderRepository _orderRepository;
+
         public OrderController(ICarRepository carRepository, IOrderRepository orderRepository)
         {
             _carRepository = carRepository;
@@ -88,6 +89,7 @@ namespace ServiceStation.WebUI.Controllers
         public ViewResult Edit(int id)
         {
             var order = _orderRepository.Orders.FirstOrDefault(x => x.Id == id);
+
             ViewBag.ClientId = _carRepository.Cars.FirstOrDefault(x => x.Id == order.CarId).ClientId;
             ViewBag.AllStatuses = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().Select(v => new SelectListItem
             {

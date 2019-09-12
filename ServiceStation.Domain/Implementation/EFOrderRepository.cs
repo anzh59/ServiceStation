@@ -1,10 +1,8 @@
-﻿using ServiceStation.Domain.Abstract;
-using ServiceStation.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using ServiceStation.Domain.Abstract;
+using ServiceStation.Domain.Entities;
 
 namespace ServiceStation.Domain.Implementation
 {
@@ -48,8 +46,10 @@ namespace ServiceStation.Domain.Implementation
             {
                 _context.Orders.Add(order);
                 _context.SaveChanges();
+
                 foreach (var service in orderServices)
                     service.OrderId = order.Id;
+
                 _context.OrderService.AddRange(orderServices);
             }
             else
@@ -63,6 +63,7 @@ namespace ServiceStation.Domain.Implementation
                     dbEntry.Amount = order.Amount;
                     dbEntry.Date = order.Date;
                 }
+
                 _context.OrderService.RemoveRange(_context.OrderService.Where(x => x.OrderId == order.Id));
                 _context.OrderService.AddRange(orderServices);
             }

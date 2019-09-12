@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ServiceStation.Domain.Entities.Client>
+
+@using (Html.BeginForm("List", "Car"))
+{
+    <input type="text" name="clientName" value="@ViewBag.ClientName" class="textbox"/>
+    <input type="submit" value="Search" class="submitbutton" />
+}
+
+    <table>
+        @foreach (var client in Model)
+        {
+        <tr>
+            <td>
+                @Html.RouteLink($"{client.FirstName} {client.LastName}", new
+                {
+                    controller = "Car",
+                    action = "List",
+                    clientId = client.Id,
+                    clientName = ViewBag.ClientName
+                },
+                new
+                {
+                    @class = client.Id == ViewBag.SelectedClient ? "selected" : null
+                })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditClient", new { id = client.Id }, new { @class = "editbutton" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteClient", new { id = client.Id }, new { @class = "deletebutton" })
+            </td>
+        </tr>
+        }
+    </table>
+<p>@Html.ActionLink("+ add a new client", "CreateClient")</p>
